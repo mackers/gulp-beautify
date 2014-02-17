@@ -1,5 +1,5 @@
 var es = require('event-stream'),
-  beautify = require('node-beautify');
+    beautify = require('js-beautify').js_beautify;
 
 module.exports = function(opt){
   function modifyFile(file, cb){
@@ -8,7 +8,7 @@ module.exports = function(opt){
 
     var str = file.contents.toString('utf8');
 
-    file.contents = new Buffer(beautify.beautifyJs(str, opt));
+    file.contents = new Buffer(beautify(str, opt));
     cb(null, file);
   }
 
